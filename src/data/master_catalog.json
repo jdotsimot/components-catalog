@@ -1,0 +1,282 @@
+[
+    {
+        "manufacturer": "Danly",
+        "catalog": "Inch",
+        "component_type": "Guide Post",
+        "part_number_series": "5-04XX",
+        "nominal_size": "0.500",
+        "description": "Demountable / Plain Bearing",
+        "boring_specs": {
+            "catalog_bore": {
+                "min": 0.8123,
+                "max": 0.8130
+            },
+            "sct_bore": {
+                "min": 0.8130,
+                "max": 0.8137,
+                "note": "SCT Override: Shifted by spread (0.0007)"
+            }
+        },
+        "clamping": "N/A"
+    },
+    {
+        "manufacturer": "Danly",
+        "catalog": "Inch",
+        "component_type": "Guide Post",
+        "part_number_series": "5-05XX",
+        "nominal_size": "0.625",
+        "description": "Demountable / Plain Bearing",
+        "boring_specs": {
+            "catalog_bore": {
+                "min": 0.9998,
+                "max": 1.0005
+            },
+            "sct_bore": {
+                "min": 1.0005,
+                "max": 1.0012,
+                "note": "SCT Override: Shifted by spread (0.0007)"
+            }
+        },
+        "clamping": "N/A"
+    },
+    {
+        "manufacturer": "Danly",
+        "catalog": "Inch",
+        "component_type": "Guide Post",
+        "part_number_series": "5-07XX",
+        "nominal_size": "0.875",
+        "description": "Demountable / Plain Bearing",
+        "boring_specs": {
+            "catalog_bore": {
+                "min": 1.3748,
+                "max": 1.3755
+            },
+            "sct_bore": {
+                "min": 1.3755,
+                "max": 1.3762,
+                "note": "SCT Override: Shifted by spread (0.0007)"
+            }
+        },
+        "clamping": {
+            "quantity": 3,
+            "screw_size": "1/4-20 x 3/4",
+            "bolt_circle_diameter": 2.126
+        }
+    },
+    {
+        "manufacturer": "Danly",
+        "catalog": "Inch",
+        "component_type": "Guide Post",
+        "part_number_series": "5-08XX",
+        "nominal_size": "1.000",
+        "description": "Demountable / Plain Bearing",
+        "boring_specs": {
+            "catalog_bore": {
+                "min": 1.4998,
+                "max": 1.5005
+            },
+            "sct_bore": {
+                "min": 1.5005,
+                "max": 1.5012,
+                "note": "SCT Override: Shifted by spread (0.0007)"
+            }
+        },
+        "clamping": {
+            "quantity": 3,
+            "screw_size": "1/4-20 x 3/4",
+            "bolt_circle_diameter": 2.250
+        }
+    },
+    {
+        "manufacturer": "Danly",
+        "catalog": "Inch",
+        "component_type": "Guide Post",
+        "part_number_series": "5-10XX",
+        "nominal_size": "1.250",
+        "description": "Demountable / Plain Bearing",
+        "boring_specs": {
+            "catalog_bore": {
+                "min": 1.7498,
+                "max": 1.7505
+            },
+            "sct_bore": {
+                "min": 1.7505,
+                "max": 1.7512,
+                "note": "SCT Override: Shifted by spread (0.0007)"
+            }
+        },
+        "clamping": {
+            "quantity": 3,
+            "screw_size": "5/16-18 x 7/8",
+            "bolt_circle_diameter": 2.782
+        }
+    },
+    {
+        "manufacturer": "Danly",
+        "catalog": "Inch",
+        "component_type": "Guide Post",
+        "part_number_series": "5-12XX",
+        "nominal_size": "1.500",
+        "description": "Demountable / Plain Bearing",
+        "boring_specs": {
+            "catalog_bore": {
+                "min": 1.9998,
+                "max": 2.0005
+            },
+            "sct_bore": {
+                "min": 2.0005,
+                "max": 2.0012,
+                "note": "SCT Override: Shifted by spread (0.0007)"
+            }
+        },
+        "clamping": {
+            "quantity": 3,
+            "screw_size": "5/16-18 x 7/8",
+            "bolt_circle_diameter": 3.062
+        }
+    },
+    {
+        "manufacturer": "Superior",
+        "catalog": "Die Set Components",
+        "component_type": "Steel/Bronze Bushing (Shoulder)",
+        "part_number_series": "311, 312, 313",
+        "nominal_size": "1.000 (ID)",
+        "description": "Demountable / Plain Bearing",
+        "boring_specs": {
+            "nominal_mounting_dia": 1.5000,
+            "catalog_bore": {
+                "min": 1.5000,
+                "max": 1.5005
+            },
+            "sct_bore": {
+                "min": 1.5005,
+                "max": 1.5010,
+                "note": "SCT Override: Shifted by spread (0.0005)"
+            }
+        },
+        "clamping": {
+            "clamp_type": "C-S",
+            "quantity": 2,
+            "screw_size": "5/16-18 x 3/4"
+        }
+    },
+    {
+        "manufacturer": "Superior",
+        "catalog": "Die Set Components",
+        "component_type": "Ball Bearing Bushing",
+        "part_number_series": "336",
+        "nominal_size": "1.000 (ID)",
+        "description": "Demountable / Ball Bearing",
+        "boring_specs": {
+            "nominal_mounting_dia": 1.7160,
+            "catalog_bore": {
+                "min": 1.7160,
+                "max": 1.7165
+            },
+            "sct_bore": {
+                "min": 1.7160,
+                "max": 1.7165,
+                "note": "No shift for Ball Bearing"
+            }
+        },
+        "clamping": {
+            "clamp_type": "C-S",
+            "quantity": 2,
+            "screw_size": "5/16-18 x 3/4"
+        }
+    },
+    {
+        "manufacturer": "Anchor Lamina",
+        "catalog": "Round Die Products",
+        "component_type": "Wring Fit Bushing (Shoulder)",
+        "part_number_series": "AC, SC, LAC, XLAC",
+        "nominal_size": "1.000 (ID)",
+        "description": "Demountable / Plain Bearing",
+        "boring_specs": {
+            "nominal_mounting_dia": 1.5000,
+            "catalog_bore": {
+                "min": 1.5000,
+                "max": 1.5005
+            },
+            "sct_bore": {
+                "min": 1.5005,
+                "max": 1.5010,
+                "note": "SCT Override: Shifted by spread (0.0005)"
+            }
+        },
+        "clamping": {
+            "clamp_type": "D-Clamp",
+            "quantity": 3,
+            "bolt_circle": 2.156
+        }
+    },
+    {
+        "manufacturer": "MDL",
+        "catalog": "Components",
+        "component_type": "Plain Bearing Bushing (Shoulder)",
+        "part_number_series": "B16, B26",
+        "nominal_size": "1.000 (ID)",
+        "description": "Danly Style / Plain Bearing",
+        "boring_specs": {
+            "nominal_mounting_dia": 1.5000,
+            "catalog_bore": {
+                "min": 1.5003,
+                "max": 1.5009
+            },
+            "sct_bore": {
+                "min": 1.5009,
+                "max": 1.5015,
+                "note": "SCT Override: Shifted by spread (0.0006)"
+            }
+        },
+        "clamping": {
+            "clamp_type": "B01.006.001",
+            "radius_M": 1.0625,
+            "bolt_circle": 2.125
+        }
+    },
+    {
+        "manufacturer": "Steinel",
+        "catalog": "Normalien",
+        "component_type": "Guide Bushing (Gliding)",
+        "part_number_series": "ST 7100 Series",
+        "nominal_size": "25mm (ID)",
+        "description": "Bronzed Plated / Solid Lubricant",
+        "boring_specs": {
+            "nominal_mount_dia_mm": 40.0,
+            "catalog_bore": {
+                "min": 40.000,
+                "max": 40.025
+            },
+            "note": "Standard Press Fit / Location Fit"
+        },
+        "clamping": {
+            "clamp_type": "ST 7367",
+            "quantity": 3,
+            "screw_size": "M6",
+            "bolt_circle_mm": 54.0
+        }
+    },
+    {
+        "manufacturer": "Steinel",
+        "catalog": "Normalien",
+        "component_type": "Guide Pillar (Smooth)",
+        "part_number_series": "ST 7105 Series",
+        "nominal_size": "25mm (OD)",
+        "description": "Steel / Superfinished",
+        "boring_specs": {
+            "nominal_mount_dia_mm": 25.0,
+            "catalog_bore": {
+                "min": 24.978,
+                "max": 24.991
+            },
+            "note": "Press Fit (Interference)"
+        },
+        "clamping": {
+            "clamp_type": "ST 7367",
+            "quantity": 3,
+            "screw_size": "M6",
+            "bolt_circle_mm": 39.0
+        }
+    }
+]
