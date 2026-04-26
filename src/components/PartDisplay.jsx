@@ -1,8 +1,12 @@
-import React from 'react';
-import { Ruler, ArrowRightLeft, CircleDot, ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Ruler, ArrowRightLeft, CircleDot, ArrowLeft, Search } from 'lucide-react';
 import { formatDimension, padNumber } from '../utils/units';
+import masterCatalog from '../data/full_catalog.json';
 
 const PartDisplay = ({ part, width = 'full', unit = 'in', onBack }) => {
+    const [showAlternatives, setShowAlternatives] = useState(false);
+    const [alternatives, setAlternatives] = useState([]);
+
     if (!part) return (
         <div className="flex flex-col items-center justify-center h-full text-slate-600 animate-in fade-in duration-500">
             <div className="w-16 h-16 rounded-full bg-slate-900 flex items-center justify-center mb-4">
@@ -13,7 +17,55 @@ const PartDisplay = ({ part, width = 'full', unit = 'in', onBack }) => {
         </div>
     );
 
+    // Reset alternatives when part changes
+    useEffect(() => {
+        setShowAlternatives(false);
+        setAlternatives([]);
+    }, [part]);
+
     const hasSctOverride = part.boring_specs?.sct_bore || part.boring_specs?.punch_holder_bushing_bore_sct;
+
+    const getFunctionalType = (type) => {
+        const t = type.toLowerCase();
+        let normalized = "";
+
+        // Determine Base Type
+        if (t.includes("pin") || t.includes("post")) normalized += "pin_";
+        else if (t.includes("bushing") || t.includes("bearing") || t.includes("sleeve")) normalized += "bushing_";
+        else return t; // fallback
+
+        // Determine Fit Type
+        if (t.includes("demountable") || t.includes("removable")) normalized += "demountable_";
+        else if (t.includes("press fit") || t.includes("straight") || t.includes("tap fit")) normalized += "pressfit_";
+
+        // Determine Precision / Feature
+        if (t.includes("ball bearing") || t.includes("maxicage")) normalized += "ballbearing";
+        else normalized += "plain";
+
+        return normalized;
+    };
+
+    const findAlternatives = () => {
+        const currentFunctionalType = getFunctionalType(part.component_type);
+
+        const results = masterCatalog.filter(candidate => {
+            // Must be a different manufacturer
+            if (candidate.manufacturer === part.manufacturer) return false;
+
+            // Must match major dimensions (Size and Length)
+            if (candidate.nominal_size !== part.nominal_size) return false;
+            if (candidate.specific_length !== part.specific_length) return false;
+
+            // Functional Component Type Match (ignore minor naming differences)
+            const candidateFunctionalType = getFunctionalType(candidate.component_type);
+            if (currentFunctionalType !== candidateFunctionalType) return false;
+
+            return true;
+        });
+
+        setAlternatives(results);
+        setShowAlternatives(true);
+    };
 
     // Determine Source Unit
     const isMetricSource = part.manufacturer === 'Steinel' || part.manufacturer === 'MDL-Metric'; // Logic can be improved with metadata
@@ -100,6 +152,12 @@ const PartDisplay = ({ part, width = 'full', unit = 'in', onBack }) => {
                         </h4>
                         <h2 className="text-5xl font-bold text-white mb-3 tracking-tight">{part.part_number_series.replace('XX', '')} <span className="opacity-40 text-3xl font-light">Series</span></h2>
                         <p className="text-slate-400 text-xl font-light">{part.description}</p>
+                        <button
+                            onClick={findAlternatives}
+                            className="mt-4 flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-4 py-2 rounded-lg transition-colors text-sm font-bold"
+                        >
+                            <Search className="w-4 h-4" /> Find Alternatives
+                        </button>
                     </div>
 
                     <div className="bg-slate-900 px-6 py-4 rounded-2xl border border-slate-800 shadow-xl group hover:border-slate-700 transition-colors">
@@ -110,6 +168,27 @@ const PartDisplay = ({ part, width = 'full', unit = 'in', onBack }) => {
             </div>
 
             <div className="px-8 space-y-12">
+                {/* Alternatives Section */}
+                {showAlternatives && (
+                    <div className="p-6 rounded-3xl bg-slate-800/30 border border-slate-700">
+                        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <ArrowRightLeft className="w-5 h-5 text-cyan-400" /> Interchangeable Parts
+                        </h3>
+                        {alternatives.length > 0 ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {alternatives.map((alt, idx) => (
+                                    <div key={idx} className="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                                        <div className="text-sm text-slate-400 uppercase tracking-wider mb-1">{alt.manufacturer}</div>
+                                        <div className="text-lg font-bold text-cyan-400 mb-1">{alt.part_number_series.replace('XX', '')}</div>
+                                        <div className="text-xs text-slate-500 line-clamp-1">{alt.description}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-slate-400 italic">No exact cross-reference found.</p>
+                        )}
+                    </div>
+                )}
                 {/* Dimensions Row if needed */}
                 {mountDia && (
                     <div className="flex gap-4">
