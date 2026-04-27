@@ -3,7 +3,7 @@ import { Ruler, ArrowRightLeft, CircleDot, ArrowLeft, Search } from 'lucide-reac
 import { formatDimension, padNumber } from '../utils/units';
 import masterCatalog from '../data/full_catalog.json';
 
-const PartDisplay = ({ part, width = 'full', unit = 'in', onBack }) => {
+const PartDisplay = ({ part, unit, onBack, setSelectedPart }) => {
     const [showAlternatives, setShowAlternatives] = useState(false);
     const [alternatives, setAlternatives] = useState([]);
 
@@ -128,7 +128,7 @@ const PartDisplay = ({ part, width = 'full', unit = 'in', onBack }) => {
     const nominalSizeDisplay = padNumber(parseFloat(part.nominal_size) || part.nominal_size, unit);
 
     return (
-        <div className={`flex flex-col h-full max-w-5xl mx-auto w-full pt-6`}>
+        <div className={`flex flex-col h-full max-w-5xl mx-auto w-full pt-6 pb-24`}>
             {/* Back Button */}
             {onBack && (
                 <div className="px-8 mb-4">
@@ -177,11 +177,15 @@ const PartDisplay = ({ part, width = 'full', unit = 'in', onBack }) => {
                         {alternatives.length > 0 ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {alternatives.map((alt, idx) => (
-                                    <div key={idx} className="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                                        <div className="text-sm text-slate-400 uppercase tracking-wider mb-1">{alt.manufacturer}</div>
-                                        <div className="text-lg font-bold text-cyan-400 mb-1">{alt.part_number_series.replace('XX', '')}</div>
-                                        <div className="text-xs text-slate-500 line-clamp-1">{alt.description}</div>
-                                    </div>
+                                    <button
+                                        key={idx}
+                                        onClick={() => setSelectedPart(alt)}
+                                        className="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-cyan-500/50 hover:bg-slate-800 transition-all text-left text-inherit group"
+                                    >
+                                        <div className="text-sm text-slate-400 uppercase tracking-wider mb-1 group-hover:text-slate-300 transition-colors">{alt.manufacturer}</div>
+                                        <div className="text-lg font-bold text-cyan-400 mb-1 group-hover:text-cyan-300 transition-colors">{alt.part_number_series.replace('XX', '')}</div>
+                                        <div className="text-xs text-slate-500 line-clamp-1 group-hover:text-slate-400 transition-colors">{alt.description}</div>
+                                    </button>
                                 ))}
                             </div>
                         ) : (

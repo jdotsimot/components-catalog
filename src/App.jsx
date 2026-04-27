@@ -221,7 +221,7 @@ function App() {
               )}
             </div>
           ) : (
-            <PartDisplay part={selectedPart} unit={unit} onBack={() => setSelectedPart(null)} />
+            <PartDisplay part={selectedPart} unit={unit} onBack={() => setSelectedPart(null)} setSelectedPart={setSelectedPart} />
           )}
         </div>
 
